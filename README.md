@@ -1,3 +1,5 @@
+# NOTE: This is a fork of the original repository to support react 18
+
 # PowerBI Report Component
 
 ![downloads](https://img.shields.io/npm/dw/powerbi-report-component?label=npm%20downloads&style=for-the-badge)
@@ -71,7 +73,7 @@ class MyComponent extends Component {
             pageName="" // set as current page of the report. Name to be obtained from the original report URL
             reportMode="View" // open report in a particular mode View/Edit/Create
             datasetId={datasetId} // required for reportMode = "Create" and optional for dynamic databinding in `report` on `View` mode
-            groupId={groupId} // optional. Used when reportMode = "Create" and to chose the target workspace when the dataset is shared. 
+            groupId={groupId} // optional. Used when reportMode = "Create" and to chose the target workspace when the dataset is shared.
             extraSettings={extraSettings}
             permissions="All" // View, For "Edit" mode permissions should be "All"
             style={reportStyle}
@@ -111,7 +113,7 @@ import { Dashboard } from 'powerbi-report-component';
   onTileClicked={(data) => {
     console.log('Data from tile', data);
   }}
-/>
+/>;
 ```
 
 ## Usage for Tile
@@ -133,7 +135,7 @@ import { Tile } from 'powerbi-report-component';
   onLoad={(data) => {
     console.log('Tile loaded', data);
   }}
-/>
+/>;
 ```
 
 ## Usage for ReportVisual
@@ -159,7 +161,7 @@ import { ReportVisual } from 'powerbi-report-component';
   onRender={(reportVisual) => {
     console.log('ReportVisual rendered', reportVisual);
   }}
-/>
+/>;
 ```
 
 ## Like hooks ? You'll love this :)
@@ -182,8 +184,8 @@ const MyReport = ({ accessToken, embedUrl, embedId }) => {
     accessToken: accessToken,
     embedUrl: embedUrl,
     embedId: embedId,
-    reportMode: "View", // "Edit"
-    permissions: "View", // "All" (when using "Edit" mode)
+    reportMode: 'View', // "Edit"
+    permissions: 'View', // "All" (when using "Edit" mode)
     extraSettings: {
       filterPaneEnabled: false,
       navContentPaneEnabled: false,
@@ -219,7 +221,7 @@ Example is taken from powerbi js wiki: [Custom-Layout](https://github.com/Micros
 ```javascript
 import { models } from 'powerbi-client'; // Import from the dependency
 
-// Example layout config 
+// Example layout config
 const layoutSettings = {
   layoutType: models.LayoutType.Custom,
   customLayout: {
@@ -272,12 +274,10 @@ const myReportConfig = {
   },
 };
 
-
 // Inside your component
 useEffect(() => {
   embed(reportRef, myReportConfig);
 }, []);
-
 ```
 
 ### useBootstrap
@@ -289,16 +289,19 @@ import React, { useEffect, useRef } from 'react';
 import { useBootstrap } from 'powerbi-report-component';
 
 // Your configuration from server
-const simulateAjaxCall = () => new Promise(function(resolve) {
-  setTimeout(resolve.bind(null, {
-    accessToken: "accessToken",
-    embedUrl: "embedUrl",
-    embedId: "embedId",
-    reportMode: "View", // "Edit"
-    permissions: "View", // "All" (when using "Edit" mode)
-  }), 3000)
-});
-
+const simulateAjaxCall = () =>
+  new Promise(function (resolve) {
+    setTimeout(
+      resolve.bind(null, {
+        accessToken: 'accessToken',
+        embedUrl: 'embedUrl',
+        embedId: 'embedId',
+        reportMode: 'View', // "Edit"
+        permissions: 'View', // "All" (when using "Edit" mode)
+      }),
+      3000
+    );
+  });
 
 const MyReport = ({ accessToken, embedUrl, embedId }) => {
   const reportRef = useRef(null);
@@ -314,11 +317,11 @@ const MyReport = ({ accessToken, embedUrl, embedId }) => {
   };
 
   const getMyConfigurationFromServer = () => {
-    simulateAjaxCall().then(data => {
-      // Embed the report once your configuration is received 
-      embed(reportRef, {...initialReportConfig, ...data});
+    simulateAjaxCall().then((data) => {
+      // Embed the report once your configuration is received
+      embed(reportRef, { ...initialReportConfig, ...data });
     });
-  }
+  };
 
   // important
   useEffect(() => {
@@ -329,7 +332,9 @@ const MyReport = ({ accessToken, embedUrl, embedId }) => {
   return (
     <div className="report-container">
       <div className="report" ref={reportRef} />
-      <button onClick={getMyConfiguraionFromServer}>Get config from AJAX call</button>
+      <button onClick={getMyConfiguraionFromServer}>
+        Get config from AJAX call
+      </button>
     </div>
   );
 };

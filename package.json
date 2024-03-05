@@ -4,6 +4,7 @@
   "description": "It's a minimalistic react component to embed a Microsoft PowerBI report, dashboard or tile into your react application.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "private": false,
   "scripts": {
     "dev": "concurrently \"npm run lib:watch\" \"npm run docs\"",
     "lib": "tsc",
