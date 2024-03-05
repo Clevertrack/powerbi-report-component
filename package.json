@@ -1,5 +1,5 @@
 {
-  "name": "powerbi-report-component",
+  "name": "@clevertrackdk/powerbi-report-component",
   "version": "2.6.1",
   "description": "It's a minimalistic react component to embed a Microsoft PowerBI report, dashboard or tile into your react application.",
   "main": "lib/index.js",
@@ -41,8 +41,8 @@
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/npm": "^9.0.1",
-    "@types/react": "^17.0.5",
-    "@types/react-dom": "^17.0.3",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
     "@types/zen-observable": "^0.8.2",
     "antd": "^4.15.4",
     "babel-loader": "^8.2.2",
